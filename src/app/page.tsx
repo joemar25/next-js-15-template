@@ -6,7 +6,7 @@ import { ThemeChange } from "@/components/custom/theme-change"
 import SignIn from "@/components/custom/sign-in"
 
 export const metadata: Metadata = {
-  title: "Authentication",
+  title: "DMS | Login",
   description: "IPOPHIL Login",
 }
 

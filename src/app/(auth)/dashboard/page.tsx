@@ -1,28 +1,23 @@
-"use client";
+// src/app/(auth)/dashboard/page.tsx
+import { DashboardHeader } from "@/components/custom/dashboard/header"
 
-import { Button } from '@/components/ui/button';
-import { useRouter } from "next/navigation";
-
-export default function Page() {
-
-    const router = useRouter();
-
-    const handleLogout = async (e: React.MouseEvent) => {
-        e.preventDefault();
-        console.log("Logout Meow");
-        router.push("/");
-    };
-
+export default function DashboardPage() {
     return (
         <>
-            Dashboard is here
-            <Button
-                className=""
-                type="button"
-                onClick={handleLogout}
-            >
-                Logout
-            </Button>
+            <DashboardHeader
+                breadcrumbs={[
+                    { label: "Dashboard", href: "/dashboard", active: true },
+                    // { label: "Dashboard", active: true }
+                ]}
+            />
+            <div className="flex flex-1 flex-col gap-4 p-4 pt-6">
+                <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+                    <div className="aspect-video rounded-xl bg-muted/50" />
+                    <div className="aspect-video rounded-xl bg-muted/50" />
+                    <div className="aspect-video rounded-xl bg-muted/50" />
+                </div>
+                <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+            </div>
         </>
-    );
+    )
 }
