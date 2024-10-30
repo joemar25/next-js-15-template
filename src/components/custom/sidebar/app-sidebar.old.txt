@@ -110,11 +110,7 @@ const data = {
         {
           title: "Team",
           url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
+        }
         {
           title: "Limits",
           url: "#",

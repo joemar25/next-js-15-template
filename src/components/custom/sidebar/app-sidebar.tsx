@@ -1,17 +1,15 @@
 "use client"
 
-import * as React from "react"
 import {
-  BookOpen,
-  Bot,
-  Command,
+  File,
+  Files,
   Frame,
+  LayoutDashboard,
+  LeafyGreen,
   LifeBuoy,
   Map,
   PieChart,
   Send,
-  Settings2,
-  SquareTerminal,
 } from "lucide-react"
 
 import { NavMain } from "@/components/custom/sidebar/nav-main"
@@ -27,7 +25,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+
 import Image from "next/image"
+
 
 const data = {
   user: {
@@ -37,116 +37,66 @@ const data = {
   },
   navMain: [
     {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: true,
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: LayoutDashboard,
+    },
+    {
+      title: "Documents",
+      url: "/documents",
+      icon: File,
+      isActive: false,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: "Incoming",
+          url: "/documents/incoming",
         },
         {
-          title: "Starred",
-          url: "#",
+          title: "Recieved",
+          url: "/documents/recieved",
         },
         {
-          title: "Settings",
-          url: "#",
+          title: "Outgoing",
+          url: "/documents/outgoing",
         },
       ],
     },
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
+      title: "Completed",
+      url: "/completed",
+      icon: LeafyGreen,
     },
     {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
+      title: "Reports",
+      url: "/reports",
+      icon: Files,
     },
   ],
   navSecondary: [
     {
-      title: "Support",
+      title: "a",
       url: "#",
       icon: LifeBuoy,
     },
     {
-      title: "Feedback",
+      title: "s",
       url: "#",
       icon: Send,
     },
   ],
   projects: [
     {
-      name: "Design Engineering",
+      name: "1",
       url: "#",
       icon: Frame,
     },
     {
-      name: "Sales & Marketing",
+      name: "2",
       url: "#",
       icon: PieChart,
     },
     {
-      name: "Travel",
+      name: "3",
       url: "#",
       icon: Map,
     },
@@ -176,9 +126,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
+
         <NavMain items={data.navMain} />
+
+        {/*
+
+        mar-note: For future purposes
+      
         <NavProjects projects={data.projects} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
+        
+        */}
+
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

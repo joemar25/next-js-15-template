@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "DMS | Dashboard",
-  description: "IPOPHIL Dashboard Page",
+  title: "DMS",
+  description: "IPOPHIL Web Application",
 };
 
 export default function RootLayout({

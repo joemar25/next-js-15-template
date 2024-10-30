@@ -1,14 +1,14 @@
 "use client";
 
-import React from "react";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { Icons } from "../ui/icons";
+import { Icons } from "@/components/ui/icons";
 import { useRouter } from "next/navigation";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+
 import Link from "next/link";
-import { Checkbox } from "../ui/checkbox";
 
 export default function SignIn() {
   const router = useRouter();
