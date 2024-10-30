@@ -69,4 +69,8 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  img,
+  a {
+    @apply pointer-events-none;
+  }
 }
