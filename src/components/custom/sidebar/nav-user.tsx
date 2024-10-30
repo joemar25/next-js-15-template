@@ -5,14 +5,15 @@ import {
   Bell,
   ChevronsUpDown,
   LogOut,
+  Settings,
 } from "lucide-react"
-import { useRouter } from "next/navigation"
 
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar"
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,13 +23,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+
 import { ModeMenu } from "../theme-button"
+
+import { useRouter } from "next/navigation"
 
 export function NavUser({
   user,
@@ -103,6 +108,11 @@ export function NavUser({
                 onClick={() => { router.push('/account') }}>
                 <BadgeCheck className="mr-2 h-4 w-4" />
                 Account
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => { router.push('/settings') }}>
+                <Settings className="mr-2 h-4 w-4" />
+                Settings
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => { router.push('/notifications') }}>

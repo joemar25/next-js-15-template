@@ -1,12 +1,32 @@
-import type { Metadata } from "next";
+
+import { promises as fs } from "fs"
+import path from "path"
+import { Metadata } from "next"
+import { z } from "zod"
 import { DashboardHeader } from "@/components/custom/dashboard/header"
+import { columns } from "@/components/custom/documents-table/columns"
+import { DataTable } from "@/components/custom/documents-table/data-table"
+import { taskSchema } from "@/lib/faker/data/schema"
+
 
 export const metadata: Metadata = {
     title: "DMS | Documents",
     description: "IPOPHIL Documents",
 };
 
-export default function Page() {
+async function getTasks() {
+    const data = await fs.readFile(
+        path.join(process.cwd(), "src/lib/faker/data/tasks.json")
+    )
+
+    const tasks = JSON.parse(data.toString())
+
+    return z.array(taskSchema).parse(tasks)
+}
+
+export default async function TaskPage() {
+    const tasks = await getTasks()
+
     return (
         <>
             <DashboardHeader
@@ -14,13 +34,9 @@ export default function Page() {
                     { label: "Documents", href: "/documents", active: true },
                 ]}
             />
+
             <div className="flex flex-1 flex-col gap-4 p-4 pt-6">
-                Documents
-                <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-                    <div className="aspect-video rounded-xl bg-muted/50" />
-                    <div className="aspect-video rounded-xl bg-muted/50" />
-                    <div className="aspect-video rounded-xl bg-muted/50" />
-                </div>
+                <DataTable data={tasks} columns={columns} />
             </div>
         </>
     )
