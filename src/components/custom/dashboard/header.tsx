@@ -11,7 +11,7 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { ThemeChange } from '../theme-change';
-import { UserNav } from '@/components/custom/user-nav';
+import { UserHeaderNav } from '@/components/custom/user-header-nav';
 
 interface DashboardHeaderProps {
     breadcrumbs?: {
@@ -52,7 +52,7 @@ export function DashboardHeader({ breadcrumbs = [] }: DashboardHeaderProps) {
             </div>
             <div className="flex items-center">
                 <ThemeChange />
-                <UserNav />
+                <UserHeaderNav />
             </div>
         </header>
     )
