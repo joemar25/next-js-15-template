@@ -9,9 +9,9 @@ import { z } from "zod";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { documentSchema } from "@/lib/validations/documents";
+import { createDocumentSchema } from "@/lib/validations/documents/create_documents";
 
-type DocumentFormData = z.infer<typeof documentSchema>;
+type DocumentFormData = z.infer<typeof createDocumentSchema>;
 
 interface AddDocumentDialogProps {
     onCloseAction: () => void;
@@ -19,11 +19,11 @@ interface AddDocumentDialogProps {
 
 export const AddDocumentDialog: React.FC<AddDocumentDialogProps> = ({ onCloseAction }) => {
     const { register, handleSubmit, setValue, formState: { errors } } = useForm<DocumentFormData>({
-        resolver: zodResolver(documentSchema),
+        resolver: zodResolver(createDocumentSchema),
     });
 
     const onSubmit = (data: DocumentFormData) => {
-        console.log(data);
+        console.log(data)
         // Handle form submission logic here
         toast.success("Document Created", {
             description: "Your new document has been successfully created.",
@@ -53,10 +53,10 @@ export const AddDocumentDialog: React.FC<AddDocumentDialogProps> = ({ onCloseAct
                         {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
                     </div>
                     <div>
-                        <label htmlFor="category" className="block mb-1">Category *</label>
-                        <Select onValueChange={(value) => setValue("category", value)}>
+                        <label htmlFor="classification" className="block mb-1">Classification *</label>
+                        <Select onValueChange={(value) => setValue("classification", value)}>
                             <SelectTrigger className="w-full">
-                                <SelectValue placeholder="Select a category" />
+                                <SelectValue placeholder="Select a classification" />
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectItem value="confidential">Confidential</SelectItem>
@@ -66,7 +66,7 @@ export const AddDocumentDialog: React.FC<AddDocumentDialogProps> = ({ onCloseAct
                                 <SelectItem value="financial">Financial</SelectItem>
                             </SelectContent>
                         </Select>
-                        {errors.category && <p className="text-red-500 text-sm">{errors.category.message}</p>}
+                        {errors.classification && <p className="text-red-500 text-sm">{errors.classification.message}</p>}
                     </div>
                     <div>
                         <label htmlFor="type" className="block mb-1">Type *</label>

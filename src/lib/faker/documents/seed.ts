@@ -10,7 +10,7 @@ const documents = Array.from({ length: 100 }, () => ({
     code: faker.string.alphanumeric(10),
     qr: Array.from({ length: 2 }, () => faker.string.alphanumeric(10)),
     title: faker.hacker.phrase().replace(/^./, (letter) => letter.toUpperCase()),
-    category: faker.helpers.arrayElement(categories).value,
+    classification: faker.helpers.arrayElement(categories).value,
     type: faker.helpers.arrayElement(types).value,
     created_by: faker.name.firstName() + " " + faker.name.lastName(),
     date_created: faker.date.recent({ days: 30 }).toISOString(),

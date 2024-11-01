@@ -1,15 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.statuses = exports.types = exports.origin_offices = exports.categories = void 0;
 // src\lib\faker\data\data.tsx
-import {
-    ArrowDownIcon,
-    ArrowRightIcon,
-    ArrowUpIcon,
-    CircleIcon,
-    InfoCircledIcon,
-    StopwatchIcon,
-} from "@radix-ui/react-icons"
-import { RadioReceiverIcon } from "lucide-react"
-
-export const categories = [
+var react_icons_1 = require("@radix-ui/react-icons");
+var lucide_react_1 = require("lucide-react");
+exports.categories = [
     {
         value: "confidential",
         label: "Confidential",
@@ -30,9 +25,8 @@ export const categories = [
         value: "financial",
         label: "Financial",
     },
-]
-
-export const origin_offices = [
+];
+exports.origin_offices = [
     {
         value: "header_office",
         label: "Head Office",
@@ -45,55 +39,53 @@ export const origin_offices = [
         value: "regional_office",
         label: "Regional Office",
     },
-]
-
-export const types = [
+];
+exports.types = [
     {
         label: "report",
         value: "Report",
-        icon: ArrowDownIcon,
+        icon: react_icons_1.ArrowDownIcon,
     },
     {
         label: "meeting",
         value: "Meeting",
-        icon: ArrowRightIcon,
+        icon: react_icons_1.ArrowRightIcon,
     },
     {
         label: "document",
         value: "Document",
-        icon: ArrowUpIcon,
+        icon: react_icons_1.ArrowUpIcon,
     },
     {
         label: "email",
         value: "Email",
-        icon: ArrowUpIcon,
+        icon: react_icons_1.ArrowUpIcon,
     },
-]
-
-export const statuses = [
+];
+exports.statuses = [
     {
         value: "for_dispatch",
         label: "For Dispatch",
-        icon: InfoCircledIcon,
+        icon: react_icons_1.InfoCircledIcon,
     },
     {
         value: "incoming",
         label: "Incoming",
-        icon: InfoCircledIcon,
+        icon: react_icons_1.InfoCircledIcon,
     },
     {
         value: "recieved",
         label: "Recieved",
-        icon: RadioReceiverIcon,
+        icon: lucide_react_1.RadioReceiverIcon,
     },
     {
         value: "outgoing",
         label: "Outgoing",
-        icon: CircleIcon,
+        icon: react_icons_1.CircleIcon,
     },
     {
         value: "completed",
         label: "Completed",
-        icon: StopwatchIcon,
+        icon: react_icons_1.StopwatchIcon,
     },
-]
+];

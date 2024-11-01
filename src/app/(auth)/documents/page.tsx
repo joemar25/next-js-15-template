@@ -4,9 +4,9 @@ import path from "path"
 import { Metadata } from "next"
 import { z } from "zod"
 import { DashboardHeader } from "@/components/custom/dashboard/header"
+import { documentsSchema } from "@/lib/faker/documents/schema"
 import { columns } from "@/components/custom/documents-table/columns"
 import { DataTable } from "@/components/custom/documents-table/data-table"
-import { documentsSchema } from "@/lib/faker/documents/schema"
 
 export const metadata: Metadata = {
     title: "DMS | Documents",

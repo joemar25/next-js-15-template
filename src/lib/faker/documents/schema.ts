@@ -5,7 +5,7 @@ export const documentsSchema = z.object({
     code: z.string(),
     qr: z.array(z.string().regex(/^[a-zA-Z0-9]{10}$/)).length(2),
     title: z.string(),
-    category: z.string(),
+    classification: z.string(),
     type: z.string(),
     created_by: z.string(),
     date_created: z.string(),

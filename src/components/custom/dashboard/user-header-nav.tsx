@@ -61,7 +61,7 @@ export function UserHeaderNav() {
             className="cursor-pointer"
             onClick={() => { router.push('/settings/account') }}>
             <BadgeCheck className="mr-2 h-4 w-4" />
-            Profile
+            Account
           </DropdownMenuItem>
           <DropdownMenuItem
             className="cursor-pointer"
