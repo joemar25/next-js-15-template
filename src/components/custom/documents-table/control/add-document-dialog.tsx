@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+
+import React from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,27 +9,21 @@ import { z } from "zod";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-// Zod schema for form validation
-const documentSchema = z.object({
-    title: z.string().min(1, "Title is required"),
-    category: z.string().min(1, "Category is required"),
-    type: z.string().min(1, "Type is required"),
-    attachments: z.any().optional(),
-});
+import { documentSchema } from "@/lib/validations/documents";
 
 type DocumentFormData = z.infer<typeof documentSchema>;
 
 interface AddDocumentDialogProps {
-    onClose: () => void;
+    onCloseAction: () => void;
 }
 
-export const AddDocumentDialog: React.FC<AddDocumentDialogProps> = ({ onClose }) => {
-    const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm<DocumentFormData>({
+export const AddDocumentDialog: React.FC<AddDocumentDialogProps> = ({ onCloseAction }) => {
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm<DocumentFormData>({
         resolver: zodResolver(documentSchema),
     });
 
     const onSubmit = (data: DocumentFormData) => {
+        console.log(data);
         // Handle form submission logic here
         toast.success("Document Created", {
             description: "Your new document has been successfully created.",
@@ -36,11 +32,11 @@ export const AddDocumentDialog: React.FC<AddDocumentDialogProps> = ({ onClose })
                 onClick: () => console.log("Undo"),
             },
         });
-        onClose();
+        onCloseAction();
     };
 
     return (
-        <Dialog open onOpenChange={(isOpen) => !isOpen && onClose()}>
+        <Dialog open onOpenChange={(isOpen) => !isOpen && onCloseAction()}>
             <DialogContent className="max-w-md">
                 <DialogHeader>
                     <DialogTitle>Create New Document</DialogTitle>
@@ -102,9 +98,9 @@ export const AddDocumentDialog: React.FC<AddDocumentDialogProps> = ({ onClose })
                         <li>Empty Logbook</li>
                     </ul>
                     <div className="flex justify-end space-x-2">
-                        <Button variant={"default"}>Create</Button>
+                        <Button type="submit" variant={"default"}>Create</Button>
                         <DialogClose asChild>
-                            <Button variant={"secondary"} onClick={onClose}>
+                            <Button variant={"secondary"} onClick={onCloseAction}>
                                 Cancel
                             </Button>
                         </DialogClose>

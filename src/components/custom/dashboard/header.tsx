@@ -1,5 +1,6 @@
-// src/components/custom/dashboard/header.tsx
-import React from 'react';
+"use client";
+
+import React, { useState, useEffect } from 'react';
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -7,21 +8,32 @@ import {
     BreadcrumbList,
     BreadcrumbPage,
     BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
-import { SidebarTrigger } from "@/components/ui/sidebar"
+} from "@/components/ui/breadcrumb";
+import { Separator } from "@/components/ui/separator";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ThemeChange } from '../theme/theme-change';
 import { UserHeaderNav } from '@/components/custom/dashboard/user-header-nav';
 
 interface DashboardHeaderProps {
     breadcrumbs?: {
-        href?: string
-        label: string
-        active?: boolean
-    }[]
+        href?: string;
+        label: string;
+        active?: boolean;
+    }[];
 }
 
 export function DashboardHeader({ breadcrumbs = [] }: DashboardHeaderProps) {
+    const [currentTime, setCurrentTime] = useState<Date | null>(null);
+
+    useEffect(() => {
+        setCurrentTime(new Date());
+        const timer = setInterval(() => {
+            setCurrentTime(new Date());
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, []);
+
     return (
         <header className="flex h-16 shrink-0 items-center px-4 justify-between">
             <div className="flex items-center gap-2">
@@ -50,10 +62,16 @@ export function DashboardHeader({ breadcrumbs = [] }: DashboardHeaderProps) {
                     </BreadcrumbList>
                 </Breadcrumb>
             </div>
-            <div className="flex items-center">
+            {/* Display current date and time only when on the client */}
+            <div className="flex items-center space-x-4">
+                {currentTime && (
+                    <div className="hidden md:block text-sm">
+                        {currentTime.toLocaleString()}
+                    </div>
+                )}
                 <ThemeChange />
                 <UserHeaderNav />
             </div>
         </header>
-    )
+    );
 }

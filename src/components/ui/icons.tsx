@@ -114,7 +114,7 @@ export const Icons = {
             />
         </svg>
     ),
-    incoming: ({ ...props }: LucideProps) => (
+    incoming: ({ }: LucideProps) => (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -128,7 +128,7 @@ export const Icons = {
             <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
         </svg>
     ),
-    recieved: ({ ...props }: LucideProps) => (
+    recieved: ({ }: LucideProps) => (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -144,7 +144,7 @@ export const Icons = {
             <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
         </svg>
     ),
-    outgoing: ({ ...props }: LucideProps) => (
+    outgoing: ({ }: LucideProps) => (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -159,7 +159,7 @@ export const Icons = {
             <path d="M2 10h20" />
         </svg>
     ),
-    completed: ({ ...props }: LucideProps) => (
+    completed: ({ }: LucideProps) => (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

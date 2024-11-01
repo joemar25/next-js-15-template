@@ -1,6 +1,5 @@
 "use client"
 
-import React, { useState } from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import { QRCodeSVG } from "qrcode.react";
 import { DataTableColumnHeader } from "@/components/custom/table/data-table-column-header";
@@ -8,7 +7,6 @@ import { DataTableRowActions } from "./data-table-row-actions";
 import { Task } from "@/lib/faker/data/schema";
 import { Badge } from "@/components/ui/badge";
 import { categories, statuses } from "@/lib/faker/data/data";
-import { QRCodeDialog } from "./control/qr-code-dialog";
 
 export const columns: ColumnDef<Task>[] = [
 
@@ -49,24 +47,18 @@ export const columns: ColumnDef<Task>[] = [
         ),
         cell: ({ row }) => {
             const qrCodes = row.getValue("qr") as string[];
-            const [selectedQR, setSelectedQR] = useState<string | null>(null);
-
             return (
-                <>
-                    <div className="flex space-x-2">
-                        {qrCodes.map((qrCode, index) => (
-                            <div
-                                key={index}
-                                onClick={() => setSelectedQR(qrCode)}
-                                className="cursor-pointer"
-                                title={`QR Code: ${qrCode}`}
-                            >
-                                <QRCodeSVG value={qrCode} size={24} />
-                            </div>
-                        ))}
-                    </div>
-                    <QRCodeDialog selectedQR={selectedQR} onClose={() => setSelectedQR(null)} />
-                </>
+                <div className="flex space-x-2">
+                    {qrCodes.map((qrCode, index) => (
+                        <div
+                            key={index}
+                            className="cursor-pointer"
+                            title={`QR Code: ${qrCode}`}
+                        >
+                            <QRCodeSVG value={qrCode} size={24} />
+                        </div>
+                    ))}
+                </div>
             );
         },
         enableSorting: false,

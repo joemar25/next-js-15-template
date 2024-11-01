@@ -1,6 +1,5 @@
 "use client"
 
-import type { Metadata } from "next";
 import { DashboardHeader } from "@/components/custom/dashboard/header"
 import { Button } from "@/components/ui/button"
 import {
@@ -14,14 +13,17 @@ import { Overview } from "@/components/custom/dashboard/overview"
 import { RecentDocuments } from "@/components/custom/dashboard/recent-documents"
 import { Icons } from "@/components/ui/icons";
 import { useRouter } from "next/navigation";
+import { AddButton } from "@/components/custom/documents-table/control/add-document-button"
 
 /**
  * not allowed in use client:
+ * 
+ * import type { Metadata } from "next";
  *  
- *export const metadata: Metadata = {
+ * export const metadata: Metadata = {
  *    title: "DMS | Dashboard",
  *    description: "IPOPHIL Dashboard Page",
- *};
+ * };
  */
 
 export default function Page() {
@@ -53,12 +55,7 @@ export default function Page() {
                                     <Icons.completed className="h-4 w-4" />
                                     Release
                                 </Button>
-                                <Button
-                                    variant={'default'}
-                                    onClick={() => { router.push('/documents') }}>
-                                    <Icons.add className="h-4 w-4" />
-                                    Create New
-                                </Button>
+                                <AddButton title={"Add Document"} />
                             </div>
                         </div>
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
