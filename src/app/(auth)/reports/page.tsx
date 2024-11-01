@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { DashboardHeader } from "@/components/custom/dashboard/header"
 
+export const metadata: Metadata = {
+    title: "DMS | Reports",
+    description: "IPOPHIL Dashboard Page",
+};
+
 export default function Page() {
     return (
         <>

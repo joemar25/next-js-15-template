@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
-import { Cross2Icon } from "@radix-ui/react-icons"
-import { Table } from "@tanstack/react-table"
-
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { DataTableViewOptions } from "@/components/custom/table/data-table-view-options"
-
-import { priorities, statuses } from "@/lib/faker/data/data"
-import { DataTableFacetedFilter } from "@/components/custom/table/data-table-faceted-filter"
+import { Cross2Icon } from "@radix-ui/react-icons";
+import { Table } from "@tanstack/react-table";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { DataTableViewOptions } from "@/components/custom/table/data-table-view-options";
+import { types, statuses } from "@/lib/faker/data/data";
+import { DataTableFacetedFilter } from "@/components/custom/table/data-table-faceted-filter";
+import { AddButton } from "./control/add-document-button";
 
 interface DataTableToolbarProps<TData> {
-    table: Table<TData>
+    table: Table<TData>;
+    onAdd?: () => void;
 }
 
-export function DataTableToolbar<TData>({
-    table,
-}: DataTableToolbarProps<TData>) {
-    const isFiltered = table.getState().columnFilters.length > 0
+export function DataTableToolbar<TData>({ table, onAdd }: DataTableToolbarProps<TData>) {
+    const isFiltered = table.getState().columnFilters.length > 0;
+
+    const formatLabel = (label: string) => label.replace(/[_-]/g, " ");
 
     return (
         <div className="flex items-center justify-between">
@@ -34,14 +34,22 @@ export function DataTableToolbar<TData>({
                     <DataTableFacetedFilter
                         column={table.getColumn("status")}
                         title="Status"
-                        options={statuses}
+                        options={statuses.map((status) => ({
+                            value: status.value,
+                            label: formatLabel(status.label),
+                            icon: status.icon,
+                        }))}
                     />
                 )}
-                {table.getColumn("priority") && (
+                {table.getColumn("type") && (
                     <DataTableFacetedFilter
-                        column={table.getColumn("priority")}
-                        title="Priority"
-                        options={priorities}
+                        column={table.getColumn("type")}
+                        title="Types"
+                        options={types.map((type) => ({
+                            value: type.value,
+                            label: formatLabel(type.label),
+                            icon: type.icon,
+                        }))}
                     />
                 )}
                 {isFiltered && (
@@ -55,7 +63,10 @@ export function DataTableToolbar<TData>({
                     </Button>
                 )}
             </div>
-            <DataTableViewOptions table={table} />
+            <div className="flex items-center space-x-2">
+                <AddButton onAdd={onAdd} />
+                <DataTableViewOptions table={table} />
+            </div>
         </div>
-    )
+    );
 }

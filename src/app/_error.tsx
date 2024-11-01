@@ -1,3 +1,4 @@
+import { Link } from 'lucide-react';
 import { NextPageContext } from 'next';
 
 interface ErrorProps {
@@ -18,9 +19,9 @@ function Error({ statusCode }: ErrorProps) {
                             ? 'Server Error'
                             : 'An unexpected error has occurred'}
                 </p>
-                <a href="/" className="mt-6 inline-block underline">
+                <Link href="/" className="mt-6 inline-block underline">
                     Go back to Home
-                </a>
+                </Link>
             </div>
         </div>
     );

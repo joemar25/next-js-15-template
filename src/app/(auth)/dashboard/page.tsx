@@ -1,3 +1,5 @@
+"use client"
+
 import type { Metadata } from "next";
 import { DashboardHeader } from "@/components/custom/dashboard/header"
 import { Button } from "@/components/ui/button"
@@ -11,14 +13,21 @@ import {
 import { Overview } from "@/components/custom/dashboard/overview"
 import { RecentDocuments } from "@/components/custom/dashboard/recent-documents"
 import { Icons } from "@/components/ui/icons";
-import { Icon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-export const metadata: Metadata = {
-    title: "DMS | Dashboard",
-    description: "IPOPHIL Dashboard Page",
-};
+/**
+ * not allowed in use client:
+ *  
+ *export const metadata: Metadata = {
+ *    title: "DMS | Dashboard",
+ *    description: "IPOPHIL Dashboard Page",
+ *};
+ */
 
 export default function Page() {
+
+    const router = useRouter()
+
     return (
         <>
             <DashboardHeader
@@ -32,15 +41,21 @@ export default function Page() {
                         <div className="flex items-center justify-between space-y-2">
                             <h2 className="text-3xl font-bold tracking-tight">Overview</h2>
                             <div className="flex items-center space-x-2">
-                                <Button variant={'outline'}>
+                                <Button
+                                    variant={'outline'}
+                                    onClick={() => { router.push('/documents/recieved') }}>
                                     <Icons.recieved className="h-4 w-4" />
                                     Recieve
                                 </Button>
-                                <Button variant={'secondary'}>
+                                <Button
+                                    variant={'secondary'}
+                                    onClick={() => { router.push('/documents/outgoing') }}>
                                     <Icons.completed className="h-4 w-4" />
                                     Release
                                 </Button>
-                                <Button variant={'default'}>
+                                <Button
+                                    variant={'default'}
+                                    onClick={() => { router.push('/documents') }}>
                                     <Icons.add className="h-4 w-4" />
                                     Create New
                                 </Button>

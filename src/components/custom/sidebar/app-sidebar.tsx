@@ -13,8 +13,6 @@ import {
 } from "lucide-react"
 
 import { NavMain } from "@/components/custom/sidebar/nav-main"
-import { NavProjects } from "@/components/custom/sidebar/nav-projects"
-import { NavSecondary } from "@/components/custom/sidebar/nav-secondary"
 import { NavUser } from "@/components/custom/sidebar/nav-user"
 import {
   Sidebar,

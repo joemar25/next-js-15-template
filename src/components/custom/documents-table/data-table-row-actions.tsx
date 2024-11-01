@@ -8,18 +8,12 @@ import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuRadioGroup,
-    DropdownMenuRadioItem,
     DropdownMenuSeparator,
     DropdownMenuShortcut,
-    DropdownMenuSub,
-    DropdownMenuSubContent,
-    DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-import { labels } from "@/lib/faker/data/data"
-import { taskSchema } from "@/lib/faker/data/schema"
+import { documentsSchema } from "@/lib/faker/data/schema"
 
 interface DataTableRowActionsProps<TData> {
     row: Row<TData>
@@ -28,10 +22,11 @@ interface DataTableRowActionsProps<TData> {
 export function DataTableRowActions<TData>({
     row,
 }: DataTableRowActionsProps<TData>) {
-    const task = taskSchema.parse(row.original)
+    const document = documentsSchema.parse(row.original)
 
     return (
         <DropdownMenu>
+
             <DropdownMenuTrigger asChild>
                 <Button
                     variant="ghost"
@@ -41,29 +36,29 @@ export function DataTableRowActions<TData>({
                     <span className="sr-only">Open menu</span>
                 </Button>
             </DropdownMenuTrigger>
+
             <DropdownMenuContent align="end" className="w-[160px]">
+
+                <DropdownMenuItem
+                    onClick={() => navigator.clipboard.writeText(document.id)}>
+                    Copy Document ID
+                </DropdownMenuItem>
+
+                <DropdownMenuItem>View</DropdownMenuItem>
+
                 <DropdownMenuItem>Edit</DropdownMenuItem>
-                <DropdownMenuItem>Make a copy</DropdownMenuItem>
-                <DropdownMenuItem>Favorite</DropdownMenuItem>
+
+                <DropdownMenuItem>Release</DropdownMenuItem>
+
                 <DropdownMenuSeparator />
-                <DropdownMenuSub>
-                    <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent>
-                        <DropdownMenuRadioGroup value={task.label}>
-                            {labels.map((label) => (
-                                <DropdownMenuRadioItem key={label.value} value={label.value}>
-                                    {label.label}
-                                </DropdownMenuRadioItem>
-                            ))}
-                        </DropdownMenuRadioGroup>
-                    </DropdownMenuSubContent>
-                </DropdownMenuSub>
-                <DropdownMenuSeparator />
+
                 <DropdownMenuItem>
                     Delete
                     <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
                 </DropdownMenuItem>
+
             </DropdownMenuContent>
+
         </DropdownMenu>
     )
 }
