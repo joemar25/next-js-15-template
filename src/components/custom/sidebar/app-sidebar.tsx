@@ -10,6 +10,7 @@ import {
   Map,
   PieChart,
   Send,
+  User2,
 } from "lucide-react"
 
 import { NavMain } from "@/components/custom/sidebar/nav-main"
@@ -69,6 +70,11 @@ const data = {
       title: "Reports",
       url: "/reports",
       icon: Files,
+    },
+    {
+      title: "Users",
+      url: "/users",
+      icon: User2,
     },
   ],
   navSecondary: [

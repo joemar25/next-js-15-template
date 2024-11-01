@@ -106,7 +106,7 @@ export function NavUser({
             <DropdownMenuGroup>
               <DropdownMenuItem
                 className="cursor-pointer"
-                onClick={() => { router.push('/account') }}>
+                onClick={() => { router.push('/settings/account') }}>
                 <BadgeCheck className="mr-2 h-4 w-4" />
                 Account
               </DropdownMenuItem>
@@ -118,7 +118,7 @@ export function NavUser({
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="cursor-pointer"
-                onClick={() => { router.push('/notifications') }}>
+                onClick={() => { router.push('/settings/notifications') }}>
                 <Bell className="mr-2 h-4 w-4" />
                 Notifications
               </DropdownMenuItem>

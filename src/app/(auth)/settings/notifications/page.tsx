@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Separator } from "@/components/ui/separator";
-import { ProfileForm } from "@/components/custom/settings/profile-form";
+import { NotificationsForm } from "@/components/custom/settings/notifications-form";
 
 export const metadata: Metadata = {
-    title: "DMS | Settings",
-    description: "DMS Settings",
+    title: "DMS | Notifications",
+    description: "User Notifications",
 };
 
 export default function Page() {
@@ -12,13 +12,13 @@ export default function Page() {
         <>
             <div className="space-y-6">
                 <div>
-                    <h3 className="text-lg font-medium">Profile</h3>
+                    <h3 className="text-lg font-medium">Notifications</h3>
                     <p className="text-sm text-muted-foreground">
-                        This is how others will see you on the site.
+                        Configure how you receive notifications.
                     </p>
                 </div>
                 <Separator />
-                <ProfileForm />
+                <NotificationsForm />
             </div>
         </>
     )

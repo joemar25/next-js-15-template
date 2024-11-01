@@ -2,7 +2,7 @@
 
 import React from "react";
 import { QRCodeSVG } from "qrcode.react";
-import { QRCodeDialog } from "./control/qr-code-dialog";
+import { QRCodeDialog } from "./qr-code-dialog";
 
 interface QRCodeCellProps {
     qrCodes: string[];

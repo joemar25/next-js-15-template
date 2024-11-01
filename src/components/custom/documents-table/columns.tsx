@@ -7,7 +7,7 @@ import { DataTableRowActions } from "./data-table-row-actions";
 import { Task } from "@/lib/faker/data/schema";
 import { Badge } from "@/components/ui/badge";
 import { categories, statuses } from "@/lib/faker/data/data";
-import { QRCodeCell } from "./qr-code-cell";
+import { QRCodeCell } from "./control/qr-code-cell";
 
 export const columns: ColumnDef<Task>[] = [
     /**
