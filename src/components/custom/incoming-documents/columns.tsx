@@ -19,10 +19,10 @@ export const columns: ColumnDef<Task>[] = [
             // Get the "qr" array from the row value
             const qrCodes = row.getValue("qr") as string[];
 
-            // Create a "codes" array with explicit types
+            // Create a "codes" array with const assertions
             const codes = [
-                { type: 'QR' as 'QR', value: qrCodes[0] },
-                { type: 'Barcode' as 'Barcode', value: qrCodes[1] }
+                { type: "QR" as const, value: qrCodes[0] },
+                { type: "Barcode" as const, value: qrCodes[1] }
             ];
 
             return <QRCodeCell codes={codes} />;

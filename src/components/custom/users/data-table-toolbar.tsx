@@ -5,28 +5,25 @@ import { Table } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DataTableViewOptions } from "@/components/custom/table/data-table-view-options";
-import { types, statuses } from "@/lib/faker/documents/data";
+import { status_types, user_types } from "@/lib/faker/users/data";
 import { DataTableFacetedFilter } from "@/components/custom/table/data-table-faceted-filter";
-import { AddButton } from "./control/add-document-button";
 
 interface DataTableToolbarProps<TData> {
     table: Table<TData>;
     onAdd?: () => void;
 }
 
-export function DataTableToolbar<TData>({ table, onAdd }: DataTableToolbarProps<TData>) {
+export function DataTableToolbar<TData>({ table }: DataTableToolbarProps<TData>) {
     const isFiltered = table.getState().columnFilters.length > 0;
-
-    const formatLabel = (label: string) => label.replace(/[_-]/g, " ");
 
     return (
         <div className="flex items-center justify-between">
             <div className="flex flex-1 items-center space-x-2">
                 <Input
-                    placeholder="Filter documents..."
-                    value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
+                    placeholder="Filter users..."
+                    value={(table.getColumn("profile")?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
-                        table.getColumn("title")?.setFilterValue(event.target.value)
+                        table.getColumn("profile")?.setFilterValue(event.target.value)
                     }
                     className="h-8 w-[150px] lg:w-[250px]"
                 />
@@ -34,21 +31,19 @@ export function DataTableToolbar<TData>({ table, onAdd }: DataTableToolbarProps<
                     <DataTableFacetedFilter
                         column={table.getColumn("status")}
                         title="Status"
-                        options={statuses.map((status) => ({
+                        options={status_types.map((status) => ({
                             value: status.value,
-                            label: formatLabel(status.label),
-                            icon: status.icon,
+                            label: status.label
                         }))}
                     />
                 )}
-                {table.getColumn("type") && (
+                {table.getColumn("role") && (
                     <DataTableFacetedFilter
-                        column={table.getColumn("type")}
-                        title="Types"
-                        options={types.map((type) => ({
+                        column={table.getColumn("role")}
+                        title="Role"
+                        options={user_types.map((type) => ({
                             value: type.value,
-                            label: formatLabel(type.label),
-                            icon: type.icon,
+                            label: type.label
                         }))}
                     />
                 )}
@@ -63,10 +58,7 @@ export function DataTableToolbar<TData>({ table, onAdd }: DataTableToolbarProps<
                     </Button>
                 )}
             </div>
-            <div className="flex items-center space-x-2">
-                <AddButton onAdd={onAdd} title="Release" />
-                <DataTableViewOptions table={table} />
-            </div>
+            <DataTableViewOptions table={table} />
         </div>
     );
 }

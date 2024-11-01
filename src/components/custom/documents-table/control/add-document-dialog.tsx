@@ -10,6 +10,7 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createDocumentSchema } from "@/lib/validations/documents/create_documents";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type DocumentFormData = z.infer<typeof createDocumentSchema>;
 
@@ -87,16 +88,26 @@ export const AddDocumentDialog: React.FC<AddDocumentDialogProps> = ({ onCloseAct
                         <label htmlFor="attachments" className="block mb-1">Attachments</label>
                         <Input type="file" {...register("attachments")} />
                     </div>
-                    <p className="text-sm text-gray-500">
-                        Note: The following will be automatically generated:
-                    </p>
-                    <ul className="text-sm text-gray-500 list-disc list-inside">
-                        <li>Document Code</li>
-                        <li>Origin Office</li>
-                        <li>Created By</li>
-                        <li>Date Created</li>
-                        <li>Empty Logbook</li>
-                    </ul>
+
+                    <Card>
+                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                            <CardTitle className="text-sm font-medium">
+                                <p className="text-sm text-gray-500">
+                                    Note, the following will be automatically generated:
+                                </p>
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="text-sm text-gray-500 list-disc list-inside">
+                                <li>Document Code</li>
+                                <li>Origin Office</li>
+                                <li>Created By</li>
+                                <li>Date Created</li>
+                                <li>Empty Logbook</li>
+                            </ul>
+                        </CardContent>
+                    </Card>
+
                     <div className="flex justify-end space-x-2">
                         <Button type="submit" variant={"default"}>Create</Button>
                         <DialogClose asChild>

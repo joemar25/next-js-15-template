@@ -5,7 +5,7 @@ import { Table } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DataTableViewOptions } from "@/components/custom/table/data-table-view-options";
-import { types, statuses } from "@/lib/faker/documents/data";
+import { types, statuses, categories } from "@/lib/faker/documents/data";
 import { DataTableFacetedFilter } from "@/components/custom/table/data-table-faceted-filter";
 import { AddButton } from "./control/add-document-button";
 
@@ -23,7 +23,7 @@ export function DataTableToolbar<TData>({ table, onAdd }: DataTableToolbarProps<
         <div className="flex items-center justify-between">
             <div className="flex flex-1 items-center space-x-2">
                 <Input
-                    placeholder="Filter tasks..."
+                    placeholder="Filter documents..."
                     value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
                         table.getColumn("title")?.setFilterValue(event.target.value)
@@ -35,8 +35,8 @@ export function DataTableToolbar<TData>({ table, onAdd }: DataTableToolbarProps<
                         column={table.getColumn("status")}
                         title="Status"
                         options={statuses.map((status) => ({
-                            value: status.value,
                             label: formatLabel(status.label),
+                            value: status.value,
                             icon: status.icon,
                         }))}
                     />
@@ -49,6 +49,16 @@ export function DataTableToolbar<TData>({ table, onAdd }: DataTableToolbarProps<
                             value: type.value,
                             label: formatLabel(type.label),
                             icon: type.icon,
+                        }))}
+                    />
+                )}
+                {table.getColumn("classification") && (
+                    <DataTableFacetedFilter
+                        column={table.getColumn("classification")}
+                        title="Classifications"
+                        options={categories.map((type) => ({
+                            value: type.value,
+                            label: formatLabel(type.label),
                         }))}
                     />
                 )}

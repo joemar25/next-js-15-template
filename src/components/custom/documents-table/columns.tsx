@@ -8,51 +8,43 @@ import { Task } from "@/lib/faker/documents/schema";
 import { Badge } from "@/components/ui/badge";
 import { categories, statuses } from "@/lib/faker/documents/data";
 import { QRCodeCell } from "./control/qr-code-cell";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export const columns: ColumnDef<Task>[] = [
-    /**
-     * enable this is the table you want can be selected
-     * 
-     * import { Checkbox } from "@/components/ui/checkbox"
-     * {
-     *     id: "select",
-     *     header: ({ table }) => (
-     *         <Checkbox
-     *         checked={
-     *             table.getIsAllPageRowsSelected() ||
-     *             (table.getIsSomePageRowsSelected() && "indeterminate")
-     *         }
-     *         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-     *         aria-label="Select all"
-     *         className="translate-y-[2px]"
-     *         />
-     *     ),
-     *     cell: ({ row }) => (
-     *         <Checkbox
-     *         checked={row.getIsSelected()}
-     *         onCheckedChange={(value) => row.toggleSelected(!!value)}
-     *         aria-label="Select row"
-     *         className="translate-y-[2px]"
-     *         />
-     *     ),
-     *     enableSorting: false,
-     *     enableHiding: false,
-     * },
-     */
-
+    {
+        id: "select",
+        header: ({ table }) => (
+            <Checkbox
+                checked={
+                    table.getIsAllPageRowsSelected() ||
+                    (table.getIsSomePageRowsSelected() && "indeterminate")
+                }
+                onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+                aria-label="Select all"
+                className="translate-y-[2px]"
+            />
+        ),
+        cell: ({ row }) => (
+            <Checkbox
+                checked={row.getIsSelected()}
+                onCheckedChange={(value) => row.toggleSelected(!!value)}
+                aria-label="Select row"
+                className="translate-y-[2px]"
+            />
+        ),
+        enableSorting: false,
+        enableHiding: false,
+    },
     {
         accessorKey: "qr",
         header: ({ column }) => (
             <DataTableColumnHeader column={column} title="QR & Barcodes" />
         ),
         cell: ({ row }) => {
-            // Get the "qr" array from the row value
             const qrCodes = row.getValue("qr") as string[];
-
-            // Create a "codes" array with explicit types
             const codes = [
-                { type: 'QR' as 'QR', value: qrCodes[0] },
-                { type: 'Barcode' as 'Barcode', value: qrCodes[1] }
+                { type: "QR" as const, value: qrCodes[0] },
+                { type: "Barcode" as const, value: qrCodes[1] }
             ];
 
             return <QRCodeCell codes={codes} />;

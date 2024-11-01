@@ -19,6 +19,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
+import { Badge } from '@/components/ui/badge'
 
 export function NavMain({
   items,
@@ -67,6 +68,11 @@ export function NavMain({
                       ${isActive ? 'text-accent-foreground' : 'text-muted-foreground'}
                     `} />
                     <span>{item.title}</span>
+                    {item.title === "Documents" && (
+                      <Badge variant={"default"}>{item.items?.length}</Badge>
+                    )}
+
+
                   </Link>
                 </SidebarMenuButton>
 
@@ -101,6 +107,12 @@ export function NavMain({
                               >
                                 <Link href={subItem.url}>
                                   <span>{subItem.title}</span>
+                                  {
+                                    (item.title === "Documents")
+                                    &&
+                                    (
+                                      <Badge variant={"destructive"}>{item.items?.length}</Badge>
+                                    )}
                                 </Link>
                               </SidebarMenuSubButton>
                             </SidebarMenuSubItem>

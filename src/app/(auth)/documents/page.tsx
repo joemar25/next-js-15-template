@@ -38,7 +38,7 @@ export default async function TaskPage() {
                 <DataTable
                     data={tasks}
                     columns={columns}
-                    selection={false}
+                    selection={true}
                 />
             </div>
         </>

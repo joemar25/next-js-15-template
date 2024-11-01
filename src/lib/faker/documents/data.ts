@@ -30,6 +30,14 @@ export const categories = [
         value: "financial",
         label: "Financial",
     },
+    {
+        value: "internal",
+        label: "Internal",
+    },
+    {
+        value: "external",
+        label: "External",
+    },
 ]
 
 export const origin_offices = [

@@ -10,7 +10,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { scanDocumentSchema } from "@/lib/validations/documents/scan_documents";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Icons } from "@/components/ui/icons";
 
 type DocumentFormData = z.infer<typeof scanDocumentSchema>;
 
@@ -19,7 +18,7 @@ interface AddDocumentDialogProps {
 }
 
 export const AddDocumentDialog: React.FC<AddDocumentDialogProps> = ({ onCloseAction }) => {
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm<DocumentFormData>({
+    const { register, handleSubmit, formState: { errors } } = useForm<DocumentFormData>({
         resolver: zodResolver(scanDocumentSchema),
     });
 
@@ -54,7 +53,7 @@ export const AddDocumentDialog: React.FC<AddDocumentDialogProps> = ({ onCloseAct
                         <label htmlFor="code" className="block mb-1">Document Code</label>
                         <Input
                             id="code"
-                            placeholder="Enter document code"
+                            placeholder="Scan or Manually enter document code"
                             {...register("code")}
                             className="w-full"
                         />
@@ -89,9 +88,20 @@ export const AddDocumentDialog: React.FC<AddDocumentDialogProps> = ({ onCloseAct
                             }
 
                             <ol type="1" className="text-sm text-gray-500 list-disc list-inside">
-                                <li>Click the scan button next to the input box above.</li>
-                                <li>Place the document's QR code or barcode under the scanner.</li>
-                                <li>The scanner will automatically detect and fill the code in the input box.</li>
+                                <li>Select the input field.</li>
+                                <li>Use scanner to scan the document.</li>
+                                <li>
+                                    Wait for the scanner to automatically detect and fill the code in the
+                                    input box.
+                                </li>
+                                <li>
+                                    The preview of the document or document details will be
+                                    seen on the preview panel if the scanning is successful.
+                                </li>
+                                <li>
+                                    If the scanner fails to detect the code, manually input the code into
+                                    the input box.
+                                </li>
                                 <li>If scanning fails, manually type the code into the input box.</li>
                             </ol>
 

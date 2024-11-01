@@ -1,6 +1,7 @@
 import {
     AlertTriangle,
     ArrowRight,
+    Calendar,
     Check,
     ChevronLeft,
     ChevronRight,
@@ -13,10 +14,13 @@ import {
     Laptop,
     Loader2,
     LucideProps,
+    Mail,
+    MapPin,
     Moon,
     MoreVertical,
     Pizza,
     Plus,
+    RefreshCwIcon,
     Settings,
     SunMedium,
     Trash,
@@ -53,6 +57,10 @@ export const Icons = {
     laptop: Laptop,
     twitter: Twitter,
     check: Check,
+    calendar: Calendar,
+    refresh: RefreshCwIcon,
+    mapPin: MapPin,
+    mail: Mail,
 
     /**
      * Custom Icons below  
