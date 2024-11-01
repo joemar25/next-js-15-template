@@ -2,30 +2,40 @@
 
 import React from "react";
 import { QRCodeSVG } from "qrcode.react";
+import Barcode from "react-barcode";
 import { QRCodeDialog } from "./qr-code-dialog";
 
 interface QRCodeCellProps {
-    qrCodes: string[];
+    codes: { type: 'QR' | 'Barcode', value: string }[];
 }
 
-export const QRCodeCell: React.FC<QRCodeCellProps> = ({ qrCodes }) => {
-    const [selectedQR, setSelectedQR] = React.useState<string | null>(null);
+export const QRCodeCell: React.FC<QRCodeCellProps> = ({ codes }) => {
+    const [selectedCode, setSelectedCode] = React.useState<{ type: 'QR' | 'Barcode', value: string } | null>(null);
 
     return (
         <>
             <div className="flex space-x-2">
-                {qrCodes.map((qrCode, index) => (
+                {codes.map((code, index) => (
                     <div
-                        key={index}
+                        key={`code-${index}`}
                         className="cursor-pointer"
-                        title={`QR Code: ${qrCode}`}
-                        onClick={() => setSelectedQR(qrCode)}
+                        title={`${code.type} Code: ${code.value}`}
+                        onClick={() => setSelectedCode(code)}
                     >
-                        <QRCodeSVG value={qrCode} size={24} />
+                        {code.type === 'QR' ? (
+                            <QRCodeSVG value={code.value} size={24} />
+                        ) : (
+                            <Barcode
+                                value={code.value}
+                                width={0.5}
+                                height={5}
+                                fontSize={0}
+                            />
+                        )}
                     </div>
                 ))}
             </div>
-            <QRCodeDialog selectedQR={selectedQR} onClose={() => setSelectedQR(null)} />
+            <QRCodeDialog selectedCode={selectedCode} onClose={() => setSelectedCode(null)} />
         </>
     );
 };

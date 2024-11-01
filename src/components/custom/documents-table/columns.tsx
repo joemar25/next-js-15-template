@@ -4,9 +4,9 @@ import * as React from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "@/components/custom/table/data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
-import { Task } from "@/lib/faker/data/schema";
+import { Task } from "@/lib/faker/documents/schema";
 import { Badge } from "@/components/ui/badge";
-import { categories, statuses } from "@/lib/faker/data/data";
+import { categories, statuses } from "@/lib/faker/documents/data";
 import { QRCodeCell } from "./control/qr-code-cell";
 
 export const columns: ColumnDef<Task>[] = [
@@ -43,11 +43,19 @@ export const columns: ColumnDef<Task>[] = [
     {
         accessorKey: "qr",
         header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="QR" />
+            <DataTableColumnHeader column={column} title="QR & Barcodes" />
         ),
         cell: ({ row }) => {
+            // Get the "qr" array from the row value
             const qrCodes = row.getValue("qr") as string[];
-            return <QRCodeCell qrCodes={qrCodes} />;
+
+            // Create a "codes" array with explicit types
+            const codes = [
+                { type: 'QR' as 'QR', value: qrCodes[0] },
+                { type: 'Barcode' as 'Barcode', value: qrCodes[1] }
+            ];
+
+            return <QRCodeCell codes={codes} />;
         },
         enableSorting: false,
     },

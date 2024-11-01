@@ -9,8 +9,8 @@ import { DataTable } from "@/components/custom/documents-table/data-table"
 import { documentsSchema } from "@/lib/faker/documents/schema"
 
 export const metadata: Metadata = {
-    title: "DMS | Documents",
-    description: "IPOPHIL Documents",
+    title: "DMS | Users",
+    description: "IPOPHIL Users",
 };
 
 async function getTasks() {
@@ -30,7 +30,7 @@ export default async function TaskPage() {
         <>
             <DashboardHeader
                 breadcrumbs={[
-                    { label: "Documents", href: "/documents", active: true },
+                    { label: "Users", href: "/users", active: true },
                 ]}
             />
 

@@ -13,7 +13,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-import { documentsSchema } from "@/lib/faker/data/schema"
+import { documentsSchema } from "@/lib/faker/documents/schema"
 
 interface DataTableRowActionsProps<TData> {
     row: Row<TData>

@@ -103,3 +103,67 @@ body {
     @apply hover:cursor-pointer;
   }
 }
+
+/**
+ * Printing style for both QR and Bar Code in the paper
+ */
+@media print {
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .print-container,
+  .print-container * {
+    visibility: visible !important;
+  }
+
+  .print-container {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    transform: none !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  .qr-code {
+    width: 600px !important;
+    height: 600px !important;
+    min-width: 600px !important;
+    min-height: 600px !important;
+  }
+
+  .barcode-container {
+    width: 800px !important;
+    min-width: 800px !important;
+  }
+
+  .barcode-container svg {
+    width: 800px !important;
+    height: 300px !important;
+    min-width: 800px !important;
+    min-height: 300px !important;
+  }
+
+  .print-hidden {
+    display: none !important;
+  }
+
+  @page {
+    size: letter;
+    margin: 0;
+  }
+}
