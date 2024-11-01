@@ -34,6 +34,13 @@ interface DataTableProps<TData, TValue> {
     selection?: boolean
 }
 
+const formatText = (text: string): string => {
+    return text
+        .replace(/_/g, ' ')
+        .toLowerCase()
+        .replace(/^\w/, (c) => c.toUpperCase());
+}
+
 export function DataTable<TData, TValue>({
     columns,
     data,
@@ -56,7 +63,7 @@ export function DataTable<TData, TValue>({
             rowSelection,
             columnFilters,
         },
-        enableRowSelection: selection,
+        enableRowSelection: selection ? true : false,
         onRowSelectionChange: setRowSelection,
         onSortingChange: setSorting,
         onColumnFiltersChange: setColumnFilters,
@@ -77,18 +84,18 @@ export function DataTable<TData, TValue>({
                     <TableHeader>
                         {table.getHeaderGroups().map((headerGroup) => (
                             <TableRow key={headerGroup.id}>
-                                {headerGroup.headers.map((header) => {
-                                    return (
-                                        <TableHead key={header.id} colSpan={header.colSpan}>
-                                            {header.isPlaceholder
-                                                ? null
+                                {headerGroup.headers.map((header) => (
+                                    <TableHead key={header.id} colSpan={header.colSpan}>
+                                        {header.isPlaceholder
+                                            ? null
+                                            : typeof header.column.columnDef.header === 'string'
+                                                ? formatText(header.column.columnDef.header)
                                                 : flexRender(
                                                     header.column.columnDef.header,
                                                     header.getContext()
                                                 )}
-                                        </TableHead>
-                                    )
-                                })}
+                                    </TableHead>
+                                ))}
                             </TableRow>
                         ))}
                     </TableHeader>
@@ -101,10 +108,12 @@ export function DataTable<TData, TValue>({
                                 >
                                     {row.getVisibleCells().map((cell) => (
                                         <TableCell key={cell.id}>
-                                            {flexRender(
-                                                cell.column.columnDef.cell,
-                                                cell.getContext()
-                                            )}
+                                            {typeof cell.getValue() === 'string'
+                                                ? formatText(cell.getValue() as string)
+                                                : flexRender(
+                                                    cell.column.columnDef.cell,
+                                                    cell.getContext()
+                                                )}
                                         </TableCell>
                                     ))}
                                 </TableRow>
@@ -122,7 +131,7 @@ export function DataTable<TData, TValue>({
                     </TableBody>
                 </Table>
             </div>
-            <DataTablePagination table={table} />
+            <DataTablePagination table={table} showSelected={selection ? true : false} />
         </div>
     )
 }

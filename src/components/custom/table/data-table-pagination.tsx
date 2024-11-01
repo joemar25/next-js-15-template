@@ -19,16 +19,26 @@ import {
 
 interface DataTablePaginationProps<TData> {
     table: Table<TData>
+    showSelected?: boolean
 }
 
 export function DataTablePagination<TData>({
     table,
+    showSelected = true,
 }: DataTablePaginationProps<TData>) {
+    const selectedRowCount = table.getFilteredSelectedRowModel().rows.length;
+    const totalRowCount = table.getFilteredRowModel().rows.length;
+
     return (
         <div className="flex items-center justify-between px-2">
             <div className="flex-1 text-sm text-muted-foreground">
-                {table.getFilteredSelectedRowModel().rows.length} of{" "}
-                {table.getFilteredRowModel().rows.length} row(s) selected.
+                {showSelected && (
+                    <span>
+                        {selectedRowCount > 0
+                            ? `${selectedRowCount} of ${totalRowCount} row(s) selected.`
+                            : `No rows selected.`}
+                    </span>
+                )}
             </div>
             <div className="flex items-center space-x-6 lg:space-x-8">
                 <div className="flex items-center space-x-2">
@@ -40,7 +50,7 @@ export function DataTablePagination<TData>({
                         }}
                     >
                         <SelectTrigger className="h-8 w-[70px]">
-                            <SelectValue placeholder={table.getState().pagination.pageSize} />
+                            <SelectValue placeholder={`${table.getState().pagination.pageSize}`} />
                         </SelectTrigger>
                         <SelectContent side="top">
                             {[10, 20, 30, 40, 50].map((pageSize) => (
