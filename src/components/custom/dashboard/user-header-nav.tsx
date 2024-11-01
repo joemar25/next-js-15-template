@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { BadgeCheck, Settings, Bell, LogOut } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { ModeMenu } from "./theme-button"
+import { ModeMenu } from "../theme/theme-button"
 
 export function UserHeaderNav() {
 

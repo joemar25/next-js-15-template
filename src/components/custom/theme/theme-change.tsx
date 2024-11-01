@@ -10,7 +10,7 @@ import {
     TooltipTrigger,
     TooltipProvider
 } from "@/components/ui/tooltip";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 
 export function ThemeChange() {
     const { setTheme, theme } = useTheme();

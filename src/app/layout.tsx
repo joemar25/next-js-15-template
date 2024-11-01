@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={` "scroll-smooth focus:scroll-auto" ${geistSans.className} ${geistMono.variable} antialiased`} suppressHydrationWarning>
+    <html lang="en" className={` ${geistSans.className} ${geistMono.variable} antialiased`} suppressHydrationWarning>
       <body className="text-foreground select-none">
         <ThemeProvider
           attribute="class"

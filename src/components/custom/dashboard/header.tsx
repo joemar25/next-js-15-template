@@ -10,8 +10,8 @@ import {
 } from "@/components/ui/breadcrumb"
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
-import { ThemeChange } from '../theme-change';
-import { UserHeaderNav } from '@/components/custom/user-header-nav';
+import { ThemeChange } from '../theme/theme-change';
+import { UserHeaderNav } from '@/components/custom/dashboard/user-header-nav';
 
 interface DashboardHeaderProps {
     breadcrumbs?: {

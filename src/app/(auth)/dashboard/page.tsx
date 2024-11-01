@@ -8,9 +8,10 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { Overview } from "./overview"
-import { RecentDocuments } from "./recent-documents"
-
+import { Overview } from "@/components/custom/dashboard/overview"
+import { RecentDocuments } from "@/components/custom/dashboard/recent-documents"
+import { Icons } from "@/components/ui/icons";
+import { Icon } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "DMS | Dashboard",
@@ -25,15 +26,24 @@ export default function Page() {
                     { label: "Dashboard", href: "/dashboard", active: true },
                 ]}
             />
-            <div className="flex flex-1 flex-col gap-4 p-4 pt-6">
+            <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
                 <div className="hidden flex-col md:flex">
-                    <div className="flex-1 space-y-4 p-8 pt-6">
+                    <div className="flex-1 space-y-4">
                         <div className="flex items-center justify-between space-y-2">
                             <h2 className="text-3xl font-bold tracking-tight">Overview</h2>
                             <div className="flex items-center space-x-2">
-                                <Button variant={'outline'}>Recieve</Button>
-                                <Button variant={'secondary'}>Release</Button>
-                                <Button variant={'default'}>Create New</Button>
+                                <Button variant={'outline'}>
+                                    <Icons.recieved className="h-4 w-4" />
+                                    Recieve
+                                </Button>
+                                <Button variant={'secondary'}>
+                                    <Icons.completed className="h-4 w-4" />
+                                    Release
+                                </Button>
+                                <Button variant={'default'}>
+                                    <Icons.add className="h-4 w-4" />
+                                    Create New
+                                </Button>
                             </div>
                         </div>
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -42,18 +52,7 @@ export default function Page() {
                                     <CardTitle className="text-sm font-medium">
                                         Total Incoming
                                     </CardTitle>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        className="h-4 w-4 text-muted-foreground"
-                                    >
-                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                                    </svg>
+                                    <Icons.incoming className="h-4 w-4 text-muted-foreground" />
                                 </CardHeader>
                                 <CardContent>
                                     <div className="text-2xl font-bold">15</div>
@@ -67,20 +66,7 @@ export default function Page() {
                                     <CardTitle className="text-sm font-medium">
                                         Total Recieved
                                     </CardTitle>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        className="h-4 w-4 text-muted-foreground"
-                                    >
-                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                        <circle cx="9" cy="7" r="4" />
-                                        <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-                                    </svg>
+                                    <Icons.recieved className="h-4 w-4 text-muted-foreground" />
                                 </CardHeader>
                                 <CardContent>
                                     <div className="text-2xl font-bold">21</div>
@@ -92,19 +78,7 @@ export default function Page() {
                             <Card>
                                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                                     <CardTitle className="text-sm font-medium">Total Outgoing</CardTitle>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        className="h-4 w-4 text-muted-foreground"
-                                    >
-                                        <rect width="20" height="14" x="2" y="5" rx="2" />
-                                        <path d="M2 10h20" />
-                                    </svg>
+                                    <Icons.outgoing className="h-4 w-4 text-muted-foreground" />
                                 </CardHeader>
                                 <CardContent>
                                     <div className="text-2xl font-bold">8</div>
@@ -118,18 +92,7 @@ export default function Page() {
                                     <CardTitle className="text-sm font-medium">
                                         Total Completed
                                     </CardTitle>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        className="h-4 w-4 text-muted-foreground"
-                                    >
-                                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                                    </svg>
+                                    <Icons.completed className="h-4 w-4 text-muted-foreground" />
                                 </CardHeader>
                                 <CardContent>
                                     <div className="text-2xl font-bold">9</div>
@@ -163,33 +126,6 @@ export default function Page() {
                     </div>
                 </div>
             </div>
-
-
         </>
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { Lightbulb, Moon } from "lucide-react";
-import { DropdownMenuItem } from "../ui/dropdown-menu";
+import { DropdownMenuItem } from "../../ui/dropdown-menu";
 
 export function ModeMenu() {
     const { setTheme, theme } = useTheme();

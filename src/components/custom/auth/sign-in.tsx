@@ -95,7 +95,7 @@ export default function SignIn() {
 
         <div className="flex flex-col space-y-4">
           <Button
-            className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full rounded-md h-10 font-medium shadow-input bg-gray-50 hover:bg-gray-900 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)] transition-colors duration-200"
+            className="relative group/btn flex space-x-2 items-center justify-center px-4 w-full rounded-md h-10 font-medium shadow-input bg-gray-50 hover:bg-gray-900 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)] transition-colors duration-200"
             type="button"
             onClick={handleGoogleSignIn}
           >
@@ -107,7 +107,7 @@ export default function SignIn() {
           </Button>
 
           <Button
-            className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full rounded-md h-10 font-medium shadow-input bg-gray-50 hover:bg-gray-900 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)] transition-colors duration-200"
+            className="relative group/btn flex space-x-2 items-center justify-center px-4 w-full rounded-md h-10 font-medium shadow-input bg-gray-50 hover:bg-gray-900 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)] transition-colors duration-200"
             type="button"
             onClick={handleMicrosoftSignIn}
           >

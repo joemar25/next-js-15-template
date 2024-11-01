@@ -12,7 +12,7 @@ export default function Page() {
             <DashboardHeader
                 breadcrumbs={[
                     { label: "Documents", href: "/documents" },
-                    { label: "Documents", active: true }
+                    { label: "Recieved", active: true }
                 ]}
             />
             <div className="flex flex-1 flex-col gap-4 p-4 pt-6">

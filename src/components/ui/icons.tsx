@@ -51,6 +51,12 @@ export const Icons = {
     sun: SunMedium,
     moon: Moon,
     laptop: Laptop,
+    twitter: Twitter,
+    check: Check,
+
+    /**
+     * Custom Icons below  
+     */
     gitHub: ({ ...props }: LucideProps) => (
         <svg
             aria-hidden="true"
@@ -81,36 +87,90 @@ export const Icons = {
             <rect x="248" y="248" width="200" height="200" fill="#FFB900" />
         </svg>
     ),
-    /**
-     * mar-note: This Google is not yet finished, it is a manual svg creation, please provide 
-     */
     google: ({ ...props }: LucideProps) => (
         <svg
             aria-hidden="true"
             focusable="false"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 488 512"
+            viewBox="0 0 448 448"
             {...props}
         >
             <path
                 fill="#4285F4"
-                d="M488 261.8C488 403.3 391.1 504 248 504c-137 0-248-111-248-248S111 8 248 8c66.4 0 122.2 24.4 165.1 64.6l-67.1 64.5C310.5 94.4 270.7 80 248 80c-103.5 0-187.6 85.4-187.6 187.9S144.5 456 248 456c95.7 0 131.4-68.4 137.2-104.1H248v-83.8h240c2.2 13.3 3.8 26.5 3.8 50.7z"
+                d="M224 237.9h115.8c-5.1 29.4-20.6 54.2-44.4 70.5v58.6h71.8c42.2-38.6 66.8-95.3 66.8-160.5 0-9.9-.8-19.5-2.2-28.9H224v60.3z"
             />
             <path
                 fill="#34A853"
-                d="M119.2 311.5l-16.5 61.5-60.2 1.3c-24.1-44.4-37.9-96.1-37.9-151.3 0-28.6 5.3-56 14.5-81.2h.1l54.2 9.9 23.7 54.1c-6.5 19.4-10.1 40.1-10.1 61.2 0 23.6 4.2 46.1 11.8 66.5z"
+                d="M224 448c59.2 0 108.8-19.5 145-53.1l-71.8-58.6c-20.1 13.3-45.7 21-73.2 21-56.6 0-104.4-37.5-121.5-89.7H27.6v59.3C64 398.5 138.1 448 224 448z"
             />
             <path
                 fill="#FBBC05"
-                d="M248 456c62.6 0 114.9-20.8 153.1-56.5l-73.4-61.1c-21.2 14.4-48.2 22.9-79.7 22.9-60.3 0-111.6-40.5-129.9-95.1l-74.8 61.3C86.8 408 161.3 456 248 456z"
+                d="M102.5 267.6c-4.8-14.4-7.5-29.6-7.5-45.6s2.7-31.2 7.5-45.6V117H27.6C10.1 153.7 0 189.6 0 222s10.1 68.3 27.6 105l74.9-59.4z"
             />
             <path
                 fill="#EA4335"
-                d="M119.2 200.5l-23.7-54.1-54.2-9.9h-.1c-9.2 25.2-14.5 52.6-14.5 81.2 0 55.2 13.8 106.9 37.9 151.3l74.8-61.3c-7.6-20.3-11.8-42.8-11.8-66.5 0-21.1 3.6-41.8 10.1-61.2z"
+                d="M224 89.7c32.3 0 61.3 11.1 84.3 29.7l63.3-63.3C332.9 22.4 281.6 0 224 0 138.1 0 64 49.5 27.6 117l74.9 59.4c17.1-52.2 64.9-89.7 121.5-89.7z"
             />
         </svg>
     ),
-    twitter: Twitter,
-    check: Check,
+    incoming: ({ ...props }: LucideProps) => (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            className="h-4 w-4 text-muted-foreground"
+        >
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+        </svg>
+    ),
+    recieved: ({ ...props }: LucideProps) => (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            className="h-4 w-4 text-muted-foreground"
+        >
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+    ),
+    outgoing: ({ ...props }: LucideProps) => (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            className="h-4 w-4 text-muted-foreground"
+        >
+            <rect width="20" height="14" x="2" y="5" rx="2" />
+            <path d="M2 10h20" />
+        </svg>
+    ),
+    completed: ({ ...props }: LucideProps) => (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            className="h-4 w-4 text-muted-foreground"
+        >
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+        </svg>
+    ),
 };
