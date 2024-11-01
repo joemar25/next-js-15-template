@@ -1,12 +1,30 @@
-import type { Metadata } from "next";
+import type { Metadata } from "next"
+import { promises as fs } from "fs"
+import path from "path"
 import { DashboardHeader } from "@/components/custom/dashboard/header"
+import ReportGenerator from "@/components/custom/report-generator/report-generator"
+import { documentsSchema } from "@/lib/faker/documents/schema"
+import { z } from "zod"
 
 export const metadata: Metadata = {
     title: "DMS | Reports",
     description: "IPOPHIL Dashboard Page",
-};
+}
 
-export default function Page() {
+async function getDocuments() {
+    const data = await fs.readFile(
+        path.join(process.cwd(), "src/lib/faker/documents/documents.json")
+    )
+
+    const tasks = JSON.parse(data.toString())
+
+    return z.array(documentsSchema).parse(tasks)
+}
+
+export default async function Page() {
+
+    const data = await getDocuments()
+
     return (
         <>
             <DashboardHeader
@@ -15,15 +33,7 @@ export default function Page() {
                 ]}
             />
             <div className="flex flex-1 flex-col gap-4 p-4 pt-6">
-                Generate Reports
-                <div className="">
-                    <ol>
-                        <li>classifications</li>
-                        <li>type</li>
-                        <li>date from</li>
-                        <li>date to</li>
-                    </ol>
-                </div>
+                <ReportGenerator data={data} />
             </div>
         </>
     )
