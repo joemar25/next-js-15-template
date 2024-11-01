@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/sidebar"
 
 import Image from "next/image"
+import { NavSecondary } from "./nav-secondary"
 
 
 const data = {
@@ -72,12 +73,12 @@ const data = {
   ],
   navSecondary: [
     {
-      title: "a",
+      title: "Customer Support",
       url: "#",
       icon: LifeBuoy,
     },
     {
-      title: "s",
+      title: "Send Feedback",
       url: "#",
       icon: Send,
     },
@@ -126,13 +127,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
 
         <NavMain items={data.navMain} />
+        <NavSecondary items={data.navSecondary} className="mt-auto" />
 
         {/*
 
         mar-note: For future purposes
       
         <NavProjects projects={data.projects} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
         
         */}
 
