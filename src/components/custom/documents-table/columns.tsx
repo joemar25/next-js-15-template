@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
+import * as React from "react";
 import { ColumnDef } from "@tanstack/react-table";
-import { QRCodeSVG } from "qrcode.react";
 import { DataTableColumnHeader } from "@/components/custom/table/data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 import { Task } from "@/lib/faker/data/schema";
 import { Badge } from "@/components/ui/badge";
 import { categories, statuses } from "@/lib/faker/data/data";
+import { QRCodeCell } from "./qr-code-cell";
 
 export const columns: ColumnDef<Task>[] = [
-
     /**
      * enable this is the table you want can be selected
      * 
@@ -47,19 +47,7 @@ export const columns: ColumnDef<Task>[] = [
         ),
         cell: ({ row }) => {
             const qrCodes = row.getValue("qr") as string[];
-            return (
-                <div className="flex space-x-2">
-                    {qrCodes.map((qrCode, index) => (
-                        <div
-                            key={index}
-                            className="cursor-pointer"
-                            title={`QR Code: ${qrCode}`}
-                        >
-                            <QRCodeSVG value={qrCode} size={24} />
-                        </div>
-                    ))}
-                </div>
-            );
+            return <QRCodeCell qrCodes={qrCodes} />;
         },
         enableSorting: false,
     },
